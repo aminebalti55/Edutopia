@@ -1,8 +1,8 @@
-# StudentDine :fork_and_knife: :books:
+# Edutopia :fork_and_knife: :books:
 
 
 
-StudentDine is a restaurant management application designed specifically for students. Built with Spring Boot, Angular, MySQL, and Keycloak, it offers a variety of features to help students manage their dining experiences.
+Edutopia is a restaurant management application designed specifically for students. Built with Spring Boot, Angular, MySQL, and Keycloak, it offers a variety of features to help students manage their dining experiences.
 
 ## :sparkles: Features
 
