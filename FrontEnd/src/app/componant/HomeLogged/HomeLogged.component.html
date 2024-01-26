@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Lugx Gaming Shop HTML5 Template</title>
+
+
+
+
+
+  </head>
+
+<body>
+
+
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="../../index.html" class="logo">
+                        <img src="../../assets/images/logo.png" alt="" style="width: 158px;">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a [routerLink]="['/']" class="active">Home</a></li>
+                        <li><a [routerLink]="['/shop']">Our Shop</a></li>
+                        <li><a [routerLink]="['/product-details']">Product Details</a></li>
+                        <li><a [routerLink]="['/contact']">Contact Us</a></li>
+                        <li class="profile-menu">
+                            <a href="#" class="profile-pic">
+                              <img [src]="profilePicture" alt="Profile Picture">
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#" (click)="onLogout($event)">Logout</a></li> <!-- Add the (click) event listener here -->
+                              </ul>
+                        </li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="caption header-text">
+            <h6>Welcome to Edutopia</h6>
+            <h2>Edutopia: The University's Premier Dining Destination"</h2>
+            <p>At Edutopia, we're not just serving meals, we're crafting experiences. Our restaurant is more than just a place to eat - it's a hub for the university community to come together, relax, and savor the flavors of the world. With a focus on locally-sourced ingredients and creative cuisine, our menu offers something for everyone, from vegans to meat-lovers. Come dine with us and discover why Edutopia is the ultimate destination for foodies on campus.</p>
+            <div class="search-input">
+              <form id="search" action="#">
+                <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                <button role="button">Search Now</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 offset-lg-2">
+          <div class="right-image">
+            <img src="../../assets/images/banner-image.png" alt="">
+            <span class="price">Fresh Food Everyday</span>
+            <span class="offer">Enjoy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style =" margin-left : 340px ; " class="features">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6">
+          <a href="#">
+            <div class="item">
+              <div class="image">
+                <img src="../../assets/images/featured-02.png" alt="" style="max-width: 44px;">
+              </div>
+              <h4>Breakfeast</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <a href="#">
+            <div class="item">
+              <div class="image">
+                <img src="../../assets/images/featured-03.png" alt="" style="max-width: 44px;">
+              </div>
+              <h4>Lunch</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <a href="#">
+            <div class="item">
+              <div class="image">
+                <img src="../../assets/images/featured-04.png" alt="" style="max-width: 44px;">
+              </div>
+              <h4>Dinner</h4>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section trending">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <h6>Dishes</h6>
+            <h2>The Dishes We Serve</h2>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="main-button">
+            <a href="shop.html">View All</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6" *ngFor="let dish of dishes">
+            <div class="item">
+              <div class="thumb">
+                <a href="product-details.html"><img [src]="'data:image/jpeg;base64,' + dish.image" alt="{{ dish.name }}"></a>
+                <span class="price">{{ dish.price }} DT</span>
+              </div>
+              <div class="down-content">
+                <span class="category">{{ dish.category }}</span>
+                <h4>{{ dish.name }}</h4>
+                <div class="rating">
+                  <i class="fa fa-star" [class.checked]="dish.score >= 1" (mouseover)="dish.hoverScore = 1" (mouseleave)="dish.hoverScore = null" (click)="rateDish(dish, 1)"></i>
+                  <i class="fa fa-star" [class.checked]="dish.score >= 2" (mouseover)="dish.hoverScore = 2" (mouseleave)="dish.hoverScore = null" (click)="rateDish(dish, 2)"></i>
+                  <i class="fa fa-star" [class.checked]="dish.score >= 3" (mouseover)="dish.hoverScore = 3" (mouseleave)="dish.hoverScore = null" (click)="rateDish(dish, 3)"></i>
+                  <i class="fa fa-star" [class.checked]="dish.score >= 4" (mouseover)="dish.hoverScore = 4" (mouseleave)="dish.hoverScore = null" (click)="rateDish(dish, 4)"></i>
+                  <i class="fa fa-star" [class.checked]="dish.score >= 5" (mouseover)="dish.hoverScore = 5" (mouseleave)="dish.hoverScore = null" (click)="rateDish(dish, 5)"></i>
+                </div>
+                <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="section most-played">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <h6>The Best Dishes </h6>
+            <h2>Our Tasty Dishes</h2>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="main-button">
+            <a href="shop.html">View All</a>
+          </div>
+        </div>
+        <div style = "margin-left : 150px; "class="col-lg-2 col-sm-6 col-xs-12" *ngFor="let dish of didi">
+          <div class="didi">
+            <div class="item">
+              <h5>{{ dish.name }}</h5>
+              <div class="thumb">
+                <a href="product-details.html"><img [src]="'data:image/jpeg;base64,' + dish.image" alt=""></a>
+              </div>
+              <div class="down-content">
+                <p>{{ dish.description }}</p>
+                <div class="rating">
+                  <p>Rating: {{ dish.score }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section most-played">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading" >
+            <h6>Recomendation</h6>
+            <h2>Our Recommended Dishes For You  </h2>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="main-button">
+            <a href="shop.html">View All</a>
+          </div>
+        </div>
+
+        <div style = "margin-left : 150px; "class="col-lg-2 col-sm-6 col-xs-12" *ngFor="let dish of recommendedDishes">
+          <div class="didi">
+            <div class="item">
+              <h5>{{ dish.name }}</h5>
+              <div class="thumb">
+                <a href="product-details.html"><img [src]="'data:image/jpeg;base64,' + dish.image" alt=""></a>
+              </div>
+              <div class="down-content">
+                <p>{{ dish.description }}</p>
+                <div class="rating">
+                  <p>spicinessLevel: {{ dish.spicinessLevel }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="background">
+
+    <div class="container">
+      <div class="section-heading">
+        <h6>Subscription</h6>
+        <h2>Our Plans </h2>
+      </div>
+      <div class="panel pricing-table">
+        <div class="pricing-plan">
+
+          <img src="https://i.postimg.cc/zB83Ybpz/illustration-burger-layout-hand-drawn-technique-line-art-vector.jpg" alt="" class="pricing-img">
+          <h2 class="pricing-header">FOODIE</h2>
+          <ul class="pricing-features">
+            <li class="pricing-features-item">Monthly subscription</li>
+            <li class="pricing-features-item">Access to exclusive foodie events, Monthly foodie newsletter</li>
+            <li class="pricing-features-item">
+              <label for="start-date">Start Date:</label>
+              <input type="date" id="start-date" name="start-date" [(ngModel)]="subscription.startDate">
+            </li>
+            <li class="pricing-features-item">
+              <label for="end-date">End Date:</label>
+              <input type="date" id="end-date" name="end-date" [(ngModel)]="subscription.endDate">
+            </li>
+          </ul>
+          <span class="pricing-price">10 DT</span>
+          <a class="pricing-button" (click)="purchaseSubscription(packageType.FOODIE)">Subscribe</a>
+        </div>
+
+        <div class="pricing-plan">
+          <img src="https://i.postimg.cc/5yZV1D1B/vector-sketch-burger-french-fries-fast-food-hand-drawn-illustration-cheeseburger-155730904.jpg" alt="" class="pricing-img">
+          <h2 class="pricing-header">BIG FOODIE </h2>
+          <ul class="pricing-features">
+            <li class="pricing-features-item">Never sleeps</li>
+            <li class="pricing-features-item">Access to exclusive foodie events, Monthly foodie newsletter <br> 10% off on all partner restaurants</li>
+            <li class="pricing-features-item">
+              <label for="start-date">Start Date:</label>
+              <input type="date" id="start-date" name="start-date" [(ngModel)]="subscription.startDate">
+            </li>
+            <li class="pricing-features-item">
+              <label for="end-date">End Date:</label>
+              <input type="date" id="end-date" name="end-date" [(ngModel)]="subscription.endDate">
+            </li>
+          </ul>
+          <span class="pricing-price">20 DT</span>
+          <a class="pricing-button" (click)="purchaseSubscription(packageType.BIG_FOODIE)">Subscribe</a>
+        </div>
+
+        <div class="pricing-plan">
+          <img src="https://i.postimg.cc/dtksXjvR/360-F-117632783-Mmr-Jgqzc-XX074cee-Ni-Oq8w-QAWr-Hi-Rjvd.jpg" alt="" class="pricing-img">
+          <h2 class="pricing-header">ULTRA FOODIE</h2>
+          <ul class="pricing-features">
+            <li class="pricing-features-item">Dedicated</li>
+            <li class="pricing-features-item">Simple horizontal scalability</li>
+            <li class="pricing-features-item">
+              <label for="start-date">Start Date:</label>
+              <input type="date" id="start-date" name="start-date" [(ngModel)]="subscription.startDate">
+            </li>
+            <li class="pricing-features-item">
+              <label for="end-date">End Date:</label>
+              <input type="date" id="end-date" name="end-date" [(ngModel)]="subscription.endDate">
+            </li>
+          </ul>
+          <span class="pricing-price">30 DT</span>
+          <a class="pricing-button" (click)="purchaseSubscription(packageType.ULTRA_FOODIE)">Subscribe</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<style>
+
+  .background {
+    padding: 0 25px 25px;
+    position: relative;
+    width: 100%;
+  }
+
+  .background::after {
+    content: '';
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#09B267', endColorstr='#11CC72',GradientType=0 );
+    height: 350px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  @media (min-width: 900px) {
+    .background {
+      padding: 0 0 25px;
+    }
+  }
+
+
+  .panel {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px 25px;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .pricing-table {
+    box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 900px) {
+    .pricing-table {
+      flex-direction: row;
+    }
+  }
+
+  .pricing-table * {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .pricing-plan {
+    border-bottom: 1px solid #11CC72;
+    padding: 25px;
+  }
+
+  .pricing-plan:last-child {
+    border-bottom: none;
+  }
+
+  @media (min-width: 900px) {
+    .pricing-plan {
+      border-bottom: none;
+      border-right: 1px solid #11CC72;
+      flex-basis: 100%;
+      padding: 25px 50px;
+    }
+
+    .pricing-plan:last-child {
+      border-right: none;
+    }
+  }
+
+  .pricing-img {
+    margin-bottom: 25px;
+    max-width: 100%;
+  }
+
+  .pricing-header {
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .pricing-features {
+    color: #09B267;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 50px 0 25px;
+  }
+
+  .pricing-features-item {
+    border-top: 1px solid #e1f1ff;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 15px 0;
+  }
+
+  .pricing-features-item:last-child {
+    border-bottom: 1px solid #e1f1ff;
+  }
+
+  .pricing-price {
+    color: #09B267;
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .pricing-button {
+    border: 1px solid #11CC72;
+    border-radius: 10px;
+    color: #09B267;
+    display: inline-block;
+    margin: 25px 0;
+    padding: 15px 35px;
+    text-decoration: none;
+    transition: all 150ms ease-in-out;
+  }
+
+  .pricing-button:hover,
+  .pricing-button:focus {
+    background-color: #11CC72;
+  }
+
+  .pricing-button.is-featured {
+    background-color: #11CC72;
+    color: #fff;
+  }
+
+  .pricing-button.is-featured:hover,
+  .pricing-button.is-featured:active {
+    background-color: #11CC72;
+  }
+
+</style>
+<div class="section categories">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-heading">
+          <h6>Menu</h6>
+          <h2>Our Menu For The Day</h2>
+        </div>
+      </div>
+      <div class="col-lg col-sm-6 col-xs-12" *ngFor="let menu of menus">
+        <div class="item">
+          <h4>{{ menu.menuName }}</h4>
+          <h4>{{ menu. menuDate}}</h4>
+
+          <div class="dishesMenu">
+
+            <div class="col-lg col-sm-6 col-xs-12">
+
+              <div class="item" *ngFor="let dishez of menu.dishes">
+                <h5>{{ dishez.name }}</h5>
+                <h5>{{ dishez.category }}</h5>
+
+                <div class="thumb" >
+                  <a href="product-details.html"><img [src]="'data:image/jpeg;base64,' + dishez.image" alt=""></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="section cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="shop">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="section-heading">
+                  <h6>Our Shop</h6>
+                  <h2>Go Pre-Order Buy & Get Best <em>Prices</em> For You!</h2>
+                </div>
+                <p>Lorem ipsum dolor consectetur adipiscing, sed do eiusmod tempor incididunt.</p>
+                <div class="main-button">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 offset-lg-2 align-self-end">
+          <div class="subscribe">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="section-heading">
+                  <h6>NEWSLETTER</h6>
+                  <h2>Get Up To $100 Off Just Buy <em>Subscribe</em> Newsletter!</h2>
+                </div>
+                <div class="search-input">
+                  <form id="subscribe" action="#">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your email...">
+                    <button type="submit">Subscribe Now</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href="https://templatemo.com" target="_blank">Design: TemplateMo</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+
+
+  </body>
+</html>
+
+
